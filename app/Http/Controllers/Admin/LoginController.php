@@ -36,8 +36,18 @@ class LoginController extends Controller
             return redirect('admin/login')->with('error','用户名或者密码不正确!');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         return view('admin.index');
+    }
+
+    /**
+     * 退出系统
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public  function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('admin/login');
     }
 }

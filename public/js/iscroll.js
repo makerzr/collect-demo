@@ -284,7 +284,6 @@ function IScroll (el, options) {
 	this.wrapper = typeof el == 'string' ? document.querySelector(el) : el;
 	this.scroller = this.wrapper.children[0];
 	this.scrollerStyle = this.scroller.style;		// cache style for better performance
-
 	this.options = {
 
 		resizeScrollbars: true,
