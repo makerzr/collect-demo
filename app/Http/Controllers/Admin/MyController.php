@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\AdminPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
 class MyController extends Controller
 {
     /**
@@ -19,6 +19,10 @@ class MyController extends Controller
 
     public function resetPassword(AdminPost $request)
     {
-        dd('1111');
+        $model = Auth::guard('admin')->user();
+        $model->password = bcrypt($request->password);
+        $model->save();
+        flash()->overlay('密码修改成功!', '友情提示:');
+        return redirect()->back();
     }
 }

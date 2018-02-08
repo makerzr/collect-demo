@@ -27,13 +27,13 @@
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">新密码：</label>
                             <div class="am-u-sm-9">
-                                <input type="password" name="newpassword" placeholder="新密码：">
+                                <input type="password" name="password" placeholder="新密码：">
                             </div>
                         </div>
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">确认密码：</label>
                             <div class="am-u-sm-9">
-                                <input type="password" name="confirmpassword" placeholder="确认密码：">
+                                <input type="password" name="password_confirmation" placeholder="确认密码：">
                             </div>
                         </div>
                         <div class="am-form-group">
