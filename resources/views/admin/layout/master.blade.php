@@ -169,9 +169,9 @@
                     </a>
                 </li>
                 <li class="tpl-left-nav-item">
-                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
+                    <a href="tags" class="nav-link tpl-left-nav-link-list">
                         <i class="am-icon-bar-chart"></i>
-                        <span>数据表</span>
+                        <span>标签管理</span>
                         <i class="tpl-left-nav-content tpl-badge-danger">
                             12
                         </i>

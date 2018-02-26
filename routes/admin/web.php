@@ -18,4 +18,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     Route::get('/password','MyController@passwordForm');
     // 处理修改密码
     Route::post('/changePassword','MyController@resetPassword');
+    //  标签管理
+    Route::resource('/tags','TagController');
 });
