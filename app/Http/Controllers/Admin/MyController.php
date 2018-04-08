@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Events\MyEvent;
+use App\Events\MyEvent1;
 use App\Http\Requests\AdminPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,7 @@ class MyController extends Controller
         $model->password = bcrypt($request->password);
         $model->save();
         $code = mt_rand(100000,999999);
-        Event::fire(new MyEvent($code));
+        Event::fire(new MyEvent1($code));
         flash()->overlay('密码修改成功!', '友情提示:');
         return redirect()->back();
     }

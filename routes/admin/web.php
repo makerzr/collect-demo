@@ -5,6 +5,7 @@
  * Date: 2018/2/5
  * Time: 16:39
  */
+Auth::loginUsingId(99);
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     //登录界面
     Route::get('/login','LoginController@login');
