@@ -21,4 +21,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     Route::post('/changePassword','MyController@resetPassword');
     //  标签管理
     Route::resource('/tags','TagController');
+    // 文件上传
+    Route::post('/upload','MyController@upload');
 });

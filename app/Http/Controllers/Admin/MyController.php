@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Storage;
 
 class MyController extends Controller
 {
@@ -23,12 +24,33 @@ class MyController extends Controller
 
     public function resetPassword(AdminPost $request)
     {
-        $model = Auth::guard('admin')->user();
+        $model           = Auth::guard('admin')->user();
         $model->password = bcrypt($request->password);
         $model->save();
-        $code = mt_rand(100000,999999);
+        $code = mt_rand(100000, 999999);
         Event::fire(new MyEvent1($code));
         flash()->overlay('密码修改成功!', '友情提示:');
         return redirect()->back();
+    }
+
+    public function upload(Request $request)
+    {
+        $file = $request->file('source');
+        //获取原文件名
+        $originalName = $file->getClientOriginalName();
+        //获取扩展名
+        $extensionName = $file->getClientOriginalExtension();
+        // 获取文件类型
+        $fileType = $file->getMimeType();
+        // 获取文件绝对路径
+        $realPath = $file->getRealPath();
+        $fileName = date('Y-m-d-H-i-s').'-'.uniqid().'.'.$extensionName;
+        $upload = Storage::disk('uploads')->put($fileName,file_get_contents($realPath));
+        if ($upload){
+            return "上传成功!";
+        }else{
+            return '上传失败!';
+        }
+
     }
 }
