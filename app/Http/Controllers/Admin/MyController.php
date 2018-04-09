@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class MyController extends Controller
@@ -52,5 +53,33 @@ class MyController extends Controller
             return '上传失败!';
         }
 
+    }
+
+    /**
+     * 纯文本形式的邮件
+     */
+    public function mail()
+    {
+        Mail::raw('邮件测试!',function($message){
+            $message->from('zhutongqq@163.com','竹筒测试邮件');
+            $message->subject('邮件主题---测试邮件');
+            $message->to('331304007@qq.com');
+        });
+    }
+
+    /**
+     * 带html格式的邮件
+     */
+    public function mail1()
+    {
+        $data =[
+          'name'=>"纪向琴",
+          'body'=>"感谢您的注册!",
+        ];
+        Mail::send('admin.login',$data,function ($message){
+            $message->from('zhutongqq@163.com','竹筒测试邮件');
+            $message->subject('邮件主题---测试邮件');
+            $message->to('331304007@qq.com');
+        });
     }
 }

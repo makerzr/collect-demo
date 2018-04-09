@@ -23,4 +23,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     Route::resource('/tags','TagController');
     // 文件上传
     Route::post('/upload','MyController@upload');
+    // 发送纯文本邮件
+    Route::get('/mail','MyController@mail');
+    // 发送html邮件
+    Route::get('/mail1','MyController@mail1');
 });
