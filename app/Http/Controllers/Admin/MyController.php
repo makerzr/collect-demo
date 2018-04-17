@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Events\MyEvent;
 use App\Events\MyEvent1;
 use App\Http\Requests\AdminPost;
+use App\Mail\WelcomeMyHome;
+use App\Models\Admin;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -14,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 
 class MyController extends Controller
 {
+    public $test = "test";
     /**
      * 密码修改界面
      * @param Request $request
@@ -81,5 +85,14 @@ class MyController extends Controller
             $message->subject('邮件主题---测试邮件');
             $message->to('331304007@qq.com');
         });
+    }
+
+    /**
+     * 使用 mailable发送邮件
+     */
+    public function mailable(Request $request)
+    {
+        $user = Admin::find(1);
+        Mail::to('331304007@qq.com')->send(new WelcomeMyHome($user));
     }
 }

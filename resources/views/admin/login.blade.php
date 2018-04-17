@@ -11,7 +11,6 @@
 <body>
 <!--SIGN UP-->
 <h1>laravel视频系统登录界面</h1>
-<h2>{{$name}}</h2>
 <div class="login-form">
     <div class="close"> </div>
     <div class="head-info">

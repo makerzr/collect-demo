@@ -27,4 +27,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     Route::get('/mail','MyController@mail');
     // 发送html邮件
     Route::get('/mail1','MyController@mail1');
+    // 通过mailable 发送邮件
+    Route::get('/mailable','MyController@mailable');
 });
