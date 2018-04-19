@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Admin;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -18,7 +19,7 @@ class WelcomeMyHome extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Admin $user)
     {
         $this->user = $user;
     }

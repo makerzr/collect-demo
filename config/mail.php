@@ -56,10 +56,9 @@ return [
     */
 
     'from' => [
-        'address' => env('zhutongqq@163.com', 'hello@example.com'),
-        'name' => env('Zhutong Home', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'zhutongqq@163.com'),
+        'name' => env('MAIL_FROM_NAME', 'zhutong'),
     ],
-
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

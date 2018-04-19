@@ -77,22 +77,22 @@ class MyController extends Controller
     public function mail1()
     {
         $data =[
-          'name'=>"纪向琴",
+          'name'=>"孟海龙",
           'body'=>"感谢您的注册!",
         ];
         Mail::send('admin.login',$data,function ($message){
             $message->from('zhutongqq@163.com','竹筒测试邮件');
             $message->subject('邮件主题---测试邮件');
-            $message->to('331304007@qq.com');
+            $message->to('2210411072@qq.com');
         });
     }
 
     /**
      * 使用 mailable发送邮件
      */
-    public function mailable(Request $request)
+    public function mailable()
     {
         $user = Admin::find(1);
-        Mail::to('331304007@qq.com')->send(new WelcomeMyHome($user));
+        Mail::to($user->email)->send(new WelcomeMyHome($user));
     }
 }
