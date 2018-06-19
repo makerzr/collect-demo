@@ -30,3 +30,5 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function (){
     // 通过mailable 发送邮件
     Route::get('/mailable','MyController@mailable');
 });
+//得到所有的用户
+Route::get('users','UserController@index');
