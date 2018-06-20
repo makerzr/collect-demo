@@ -18,3 +18,5 @@ Route::get('/', function () {
 include __DIR__.'/admin/web.php';
 
 Route::any('/wechat', 'WeChatController@serve');
+
+Route::resource('articles','ArticleController');

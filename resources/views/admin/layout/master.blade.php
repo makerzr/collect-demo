@@ -250,8 +250,8 @@
     </div>
 </div>
 <script src="/js/jquery.min.js"></script>
-<script src="/js/app.js"></script>
-<script src="/js/iscroll.js"></script>
+{{--<script src="/js/app.js"></script>--}}
+{{--<script src="/js/iscroll.js"></script>--}}
 <script src="/js/amazeui.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/js/echarts.min.js"></script>
