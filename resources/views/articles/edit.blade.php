@@ -13,30 +13,34 @@
 </head>
 <body>
 <div class="container">
-    <form method="post" action="/articles">
+    <form method="post" action="/articles/{{$article->id}}">
+        <input type="hidden" name="_method" value="patch">
         {{csrf_field()}}
         <div class="form-group">
             <label for="exampleInputEmail1">文章标题</label>
-            <input type="text" class="form-control" name="title" placeholder="标题">
+            <input type="text" class="form-control" name="title" placeholder="标题" value="{{$article->title}}">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">文章内容</label>
-            <textarea class="form-control" name="body" rows="3"></textarea>
+            <textarea class="form-control" name="body" rows="3">{{$article->body}}</textarea>
         </div>
         <div class="form-group">
             <label for="exampleInputFile">文章标签</label>
             <select class="form-control js-example-basic-multiple-limit" multiple="multiple" name='tags[]'>
                 @foreach($tags as $k=>$tag)
-                <option value='{{$k}}'>{{$tag}}</option>
+                    @if(in_array($k,$article->tagList))
+                        <option selected="selected" value='{{$k}}'>{{$tag}}</option>
+                    @else
+                    <option value='{{$k}}'>{{$tag}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-default">添加</button>
+        <button type="submit" class="btn btn-default">修改</button>
     </form>
 </div>
 </body>
 <script>
-    $(".js-example-basic-multiple-limit").select2({
-    });
+    $(".js-example-basic-multiple-limit").select2({});
 </script>
 </html>

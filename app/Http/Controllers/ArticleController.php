@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //创建article文章
+        $article = Article::create($request->all());
+        $article->tags()->attach($request->tags);
     }
 
     /**
@@ -47,7 +50,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+        return view('articles.show',compact('article'));
     }
 
     /**
@@ -58,7 +62,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        $tags = Tag::pluck('name','id');
+        return view('articles.edit',compact('article','tags'));
     }
 
     /**
@@ -70,7 +76,12 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->save();
+        $article->tags()->sync($request->tags);
+        return view('articles.show',compact('article'));
     }
 
     /**
