@@ -94,4 +94,11 @@ class CollectionController extends Controller
             return collect(explode('_',$data))->last();
         }));
     }
+
+    public function getGithubHot()
+    {
+        $filePath = '../'.'/github_events.json';
+        $events =json_decode(file_get_contents($filePath),true);
+        dd(collect($events));
+    }
 }

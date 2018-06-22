@@ -24,3 +24,5 @@ Route::resource('articles','ArticleController');
 Route::get('/collection/sum','CollectionController@collectionSum');
 
 Route::get('/collection/demo2','CollectionController@formatData');
+
+Route::get('/collection/demo3','CollectionController@getGithubHot');
