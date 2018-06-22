@@ -20,3 +20,7 @@ include __DIR__.'/admin/web.php';
 Route::any('/wechat', 'WeChatController@serve');
 
 Route::resource('articles','ArticleController');
+
+Route::get('/collection/sum','CollectionController@collectionSum');
+
+Route::get('/collection/demo2','CollectionController@formatData');
